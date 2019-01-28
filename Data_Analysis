@@ -21,3 +21,8 @@ word_to_remove = ["the","a","he","she","or","that","to","i","I"]
 for i in word_to_remove:
     data['reviewText'] = data['reviewText'].str.replace(i, '')
 ''' 
+
+#make a new df_2 with the required columns
+
+df_2 = df[['overall', 'reviewText', 'reviewerID','summary']].copy()
+
