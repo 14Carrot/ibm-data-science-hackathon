@@ -26,3 +26,6 @@ for i in word_to_remove:
 
 df_2 = df[['overall', 'reviewText', 'reviewerID','summary']].copy()
 
+#export the file to new csv; must make sure there is a file with name train_edited in the directory
+
+df_2.to_csv(path_or_buf = "//Users/ratebaldrobiibm.com/Desktop/DS_Hackathon/train_edited.csv", sep=',', index = False)
