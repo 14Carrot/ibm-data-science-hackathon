@@ -2,30 +2,33 @@ import pandas as pd
 import numpy as np
 import os
 
-#insert local path to train file
-data = pd.read_csv('/Users/ratebaldrobiibm.com/Desktop/DS_Hackathon/train.csv')
+#insert local path to train file to clean it my removing empty reviewText and creating a new file containing only
+# the 4 columns 'overall', 'reviewText', 'reviewerID','summary'
 
-#making sure read correctly
-data.head()
+def new_data(path):
+    data = pd.read_csv(str(path))
+   
+   #making sure read correctly
+   data.head()
 
-#sum of null values in reviewText
-sum(pd.isnull(data.reviewText))
+    #sum of null values in reviewText
+    sum(pd.isnull(data.reviewText))
 
-#makes a new dataframe that has no Null rows for reviewText
-df = data[pd.notnull(data['reviewText'])]
+    #makes a new dataframe that has no Null rows for reviewText
+    df = data[pd.notnull(data['reviewText'])]
 
 
-'''
-word_to_remove = ["the","a","he","she","or","that","to","i","I"]
+    '''
+    word_to_remove = ["the","a","he","she","or","that","to","i","I"]
 
-for i in word_to_remove:
-    data['reviewText'] = data['reviewText'].str.replace(i, '')
-''' 
+    for i in word_to_remove:
+        data['reviewText'] = data['reviewText'].str.replace(i, '')
+    ''' 
 
-#make a new df_2 with the required columns
+    #make a new df_2 with the required columns
 
-df_2 = df[['overall', 'reviewText', 'reviewerID','summary']].copy()
+    df_2 = df[['overall', 'reviewText', 'reviewerID','summary']].copy()
 
-#export the file to new csv; must make sure there is a file with name train_edited in the directory
+    #export the file to new csv; must make sure there is a file with name train_edited in the directory
 
-df_2.to_csv(path_or_buf = "//Users/ratebaldrobiibm.com/Desktop/DS_Hackathon/train_edited.csv", sep=',', index = False)
+    df_2.to_csv(path_or_buf = "//Users/ratebaldrobiibm.com/Desktop/DS_Hackathon/train_edited.csv", sep=',', index = False)
